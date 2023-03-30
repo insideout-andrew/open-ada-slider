@@ -461,7 +461,7 @@ class OSlider extends HTMLElement {
   }
 
   _currentPageWouldShowEmptySpace(){
-    return this._pages[this.currentPage].length != this.slidesPerPage
+    return this._pages[this.currentPage] && this._pages[this.currentPage].length != this.slidesPerPage
   }
 }
 
