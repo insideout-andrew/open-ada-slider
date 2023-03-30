@@ -1,6 +1,7 @@
-# Parcel Starter Kit
+# Open ADA Slider
 
-> Simple boilerplate: Parcel, Babel, Autoprefixer, Posthtml, Eslint and SCSS
+> A no-CSS-required slider component designed to comply with the accessibility standards set forth by the ADA. This slider is fully customizable, lightweight, and easy to integrate into any web application or framework.
+
 
 ## Build Setup
 
