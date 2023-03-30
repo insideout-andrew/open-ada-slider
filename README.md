@@ -16,7 +16,7 @@ import {
   OSliderPage,
   OSliderAutoplayControls,
   OSliderPaginationText
-} from "https://cdn.skypack.dev/open-ada-slider@v1.0.4"
+} from "https://cdn.skypack.dev/open-ada-slider"
 
 customElements.define('o-slider', OSlider)
 customElements.define('o-slider-next', OSliderNext, { extends: 'button' })
@@ -99,7 +99,7 @@ npm run lint
 npm run build
 ```
 
-## Documentation
+## Build Documentation
 * [Bulma](https://bulma.io/)
 * [ParcelJS](https://parceljs.org/)
 * [Eslint - Airbnb](https://github.com/airbnb/javascript)
