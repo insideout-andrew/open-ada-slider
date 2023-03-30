@@ -113,10 +113,6 @@ class OSlider extends HTMLElement {
   constructor() {
     super()
 
-    //TODO
-    // - add aria labels
-    // - add aria announcement 
-
     this.allowEmptySpaces = false //should this always be false?
     this.shouldFocus = false //turn this true when a button is clicked or the screen is swiped - otherwise animations fire everytime there is an update
 
@@ -329,7 +325,7 @@ class OSlider extends HTMLElement {
       this._currentPage = this._pages.length - 1
     } else if(this._currentPage == this.totalPages){
       this._viewport.classList.add('animations-disabled')
-      setTimeout(() => this._viewport.style.transform = `translate3D(0, 0, 0)`)
+      setTimeout(() => this._viewport.style.transform = `translate3D(0, 0, 0)`, 10)
       this._currentPage = 0
     }
 
