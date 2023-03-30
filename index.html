@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Open ADA Slider</title>
+  </head>
+  <body>
+
+
+    <section class="wrapper">
+      <o-slider 
+        id="first-slider" 
+        slide-speed="350"
+        slides-per-page="3" 
+        slides-per-page-1024="2" 
+        slides-per-page-768="1"
+        autoplay="true"
+        autoplay-speed="2000"
+      >
+        <div class="slide" style="background: fuchsia">
+          <h2>Here is content</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: pink">
+          <h2>Here is content 2</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: red">
+          <h2>Here is content 3</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: orange">
+          <h2>Here is content 4</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: yellow">
+          <h2>Here is content 5</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: green">
+          <h2>Here is content 6</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: teal">
+          <h2>Here is content 7</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: blue">
+          <h2>Here is content 8</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: purple">
+          <h2>Here is content 9</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: black">
+          <h2>Here is content 10</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div><div class="slide" style="background: gray">
+          <h2>Here is content 11</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+      </o-slider>
+      <button is="o-slider-prev" slider="first-slider">Prev</button>
+      <button is="o-slider-page" slider="first-slider" index="0">1</button>
+      <button is="o-slider-page" slider="first-slider" index="1">2</button>
+      <button is="o-slider-page" slider="first-slider" index="2">3</button>
+      <button is="o-slider-page" slider="first-slider" index="3">4</button>
+      <button is="o-slider-page" slider="first-slider" index="4">5</button>
+      <button is="o-slider-page" slider="first-slider" index="5">6</button>
+      <button is="o-slider-page" slider="first-slider" index="6">7</button>
+      <button is="o-slider-page" slider="first-slider" index="7">8</button>
+      <button is="o-slider-page" slider="first-slider" index="8">9</button>
+      <button is="o-slider-page" slider="first-slider" index="9">10</button>
+      <button is="o-slider-page" slider="first-slider" index="10">11</button>
+      <button is="o-slider-next" slider="first-slider">Next</button>
+      <o-slider-autoplay-controls slider="first-slider">
+        <button slot="play">Play</button>
+        <button slot="pause">Pause</button>
+      </o-slider-autoplay-controls>
+      <o-slider-pagination-text slider="first-slider"></o-slider-pagination-text>   
+    </section>
+
+
+
+    <section class="wrapper">
+      <o-slider 
+        id="second-slider" 
+        slide-speed="350"
+        slides-per-page="2"
+        slides-per-page-768="1"
+      >
+        <div class="slide" style="background: fuchsia">
+          <h2>Here is content</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: pink">
+          <h2>Here is content 2</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: red">
+          <h2>Here is content 3</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+      </o-slider>
+      <button is="o-slider-prev" slider="second-slider">Prev</button>
+      <button is="o-slider-page" slider="second-slider" index="0">1</button>
+      <button is="o-slider-page" slider="second-slider" index="1">2</button>
+      <button is="o-slider-page" slider="second-slider" index="2">3</button>
+      <button is="o-slider-next" slider="second-slider">Next</button>
+      <o-slider-pagination-text slider="second-slider"></o-slider-pagination-text>   
+    </section>
+
+
+
+    <section class="wrapper">
+      <o-slider 
+        id="turd-slider" 
+        slide-speed="350"
+      >
+        <div class="slide" style="background: fuchsia">
+          <h2>Here is content</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: pink">
+          <h2>Here is content 2</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: red">
+          <h2>Here is content 3</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+      </o-slider>
+      <button is="o-slider-prev" slider="turd-slider">Prev</button>
+      <button is="o-slider-page" slider="turd-slider" index="0">1</button>
+      <button is="o-slider-page" slider="turd-slider" index="1">2</button>
+      <button is="o-slider-page" slider="turd-slider" index="2">3</button>
+      <button is="o-slider-next" slider="turd-slider">Next</button> 
+      <o-slider-pagination-text slider="turd-slider"></o-slider-pagination-text>              
+    </section>
+
+    <section class="wrapper">
+      <o-slider 
+        id="fort-slider" 
+        slide-speed="350"
+        slides-per-page="2"
+      >
+        <div class="slide" style="background: fuchsia">
+          <h2>Here is content</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+        <div class="slide" style="background: pink">
+          <h2>Here is content 2</h2>
+          <p>Here is <a href="#">more content</a>.</p>
+        </div>
+      </o-slider>
+      <button is="o-slider-prev" slider="fort-slider">Prev</button>
+      <button is="o-slider-page" slider="fort-slider" index="0">1</button>
+      <button is="o-slider-page" slider="fort-slider" index="1">2</button>
+      <button is="o-slider-next" slider="fort-slider">Next</button>    
+      <o-slider-pagination-text slider="fort-slider"></o-slider-pagination-text>        
+    </section>
+
+
+
+    <script src="scripts/index.js" type="module"></script>
+  </body>
+</html>

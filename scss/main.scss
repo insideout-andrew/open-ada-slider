@@ -1,0 +1,24 @@
+@import "bulma";
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 1024px;
+  max-width: 96.5%;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.slide {
+  padding: 2rem;
+  color: white;
+}
+
+button[is="o-slider-page"] {
+  &[aria-current="true"] {
+    background: black;
+    color: white;
+  }
+}

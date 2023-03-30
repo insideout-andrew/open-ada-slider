@@ -1,0 +1,6 @@
+export { OSlider } from './scripts/components/OSlider'
+export { OSliderNext } from './scripts/components/OSliderNext'
+export { OSliderPrev } from './scripts/components/OSliderPrev'
+export { OSliderPage } from './scripts/components/OSliderPage'
+export { OSliderAutoplayControls } from './scripts/components/OSliderAutoplayControls'
+export { OSliderPaginationText } from './scripts/components/OSliderPaginationText'

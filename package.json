@@ -1,0 +1,54 @@
+{
+  "name": "@insideout-andrew/open-ada-slider",
+  "version": "1.0.0",
+  "description": "A no-CSS-required slider component designed to comply with the accessibility standards set forth by the ADA. This slider is fully customizable, lightweight, and easy to integrate into any web application or framework.",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "parcel index.html",
+    "lint": "eslint scripts/*",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/insideout-andrew/open-ada-slider.git"
+  },
+  "keywords": [
+    "ada",
+    "ada compliant",
+    "accessibility",
+    "accessible",
+    "ally",
+    "a11y"
+  ],
+  "author": "Andrew Vickerman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/insideout-andrew/open-ada-slider/issues"
+  },
+  "homepage": "https://github.com/insideout-andrew/open-ada-slider#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/preset-env": "^7.20.2",
+    "@parcel/transformer-sass": "^2.8.0",
+    "autoprefixer": "^10.4.13",
+    "bulma": "^0.9.4",
+    "eslint": "8.28.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "parcel": "^2.0.0-rc.0",
+    "postcss": "^8.4.19",
+    "postcss-loader": "^7.0.1",
+    "postcss-modules": "^6.0.0",
+    "posthtml-include": "^1.7.4",
+    "posthtml-loader": "^2.0.1",
+    "sass": "^1.56.1",
+    "npm-packlist": "^7.0.4"
+  },
+  "dependencies": {
+  }
+}

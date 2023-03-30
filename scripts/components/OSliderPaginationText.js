@@ -1,0 +1,31 @@
+class OSliderPaginationText extends HTMLElement {
+  constructor(){
+    super()
+    this.loaded = false
+  }
+
+  connectedCallback() {
+    if(this.loaded){
+      return false
+    } else {
+      this.loaded = true
+    }
+
+    this.setAttribute('aria-live', 'polite')
+    this.setAttribute('aria-atomic', 'true')
+    this._slider = document.getElementById(this.getAttribute('slider'))
+    this._slider.addEventListener('pageUpdated', e => this._init())
+    
+    this._init()
+  }
+  
+  _init(){
+    const activePage = parseInt(this._slider.currentPage) + 1
+    const totalPages = this._slider.totalPages
+    this.textContent = totalPages > 1 ? `Page ${activePage} of ${totalPages}` : ``    
+  }
+}
+
+export {
+  OSliderPaginationText 
+}
