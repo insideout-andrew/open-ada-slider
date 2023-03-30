@@ -118,13 +118,14 @@ class OSlider extends HTMLElement {
     // - add aria announcement 
 
     this.allowEmptySpaces = false //should this always be false?
+    this.shouldFocus = false //turn this true when a button is clicked or the screen is swiped - otherwise animations fire everytime there is an update
 
     //public variables
     this.slideSpeed = this.hasAttribute('slide-speed') ? parseInt(this.getAttribute('slide-speed')) : 1000
     this.swipeThreshold = this.hasAttribute('swipe-threshold') ? parseInt(this.getAttribute('swipe-threshold')) : 100
     this.autoplay = this.hasAttribute('autoplay') ? this.getAttribute('autoplay') == "true" : false
     this.autoplaySpeed = this.hasAttribute('autoplay-speed') ? parseInt(this.getAttribute('autoplay-speed')) : 6000
-
+    
 
 
     const shadow = this.attachShadow({ mode: 'open' });
@@ -204,8 +205,10 @@ class OSlider extends HTMLElement {
         return
       }      
       if(lastPos - this._mouseDownReal >= this.swipeThreshold){
+        this.shouldFocus = true
         this.currentPage -= 1
       } else if(this._mouseDownReal - lastPos >= this.swipeThreshold){
+        this.shouldFocus = true
         this.currentPage += 1
       } else {
         this._viewport.style.transform = `translate3D(${this._mouseDownTransformX}px, 0, 0)`
@@ -332,7 +335,8 @@ class OSlider extends HTMLElement {
 
     this._updateSlideAriaAndFocus()
 
-    if(!this.isAutoplaying){
+    if(!this.isAutoplaying && this.shouldFocus){
+      this.shouldFocus = false
       this._pages[this._currentPage][0].focus({preventScroll: true})
     }
   }

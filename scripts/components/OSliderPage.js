@@ -5,6 +5,7 @@ class OSliderPage extends HTMLButtonElement {
     this._slider = document.getElementById(this.getAttribute('slider'))
 
     this.addEventListener('click', e => {
+      this._slider.shouldFocus = true
       this._slider.isAutoplaying = false      
       this._slider.currentPage = this.index
     })
