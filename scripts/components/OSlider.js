@@ -426,7 +426,6 @@ class OSlider extends HTMLElement {
     appendContainer.setAttribute('aria-hidden', true)
     appendContainer.style.cssText = `
       display: flex;
-      white-space: nowrap;
     `    
     Array.from(this.children).forEach(page => {
       var clone = page.cloneNode(true)
