@@ -16,7 +16,7 @@ import {
   OSliderPage,
   OSliderAutoplayControls,
   OSliderPaginationText
-} from "https://cdn.skypack.dev/open-ada-slider"
+} from "open-ada-slider"
 
 customElements.define('o-slider', OSlider)
 customElements.define('o-slider-next', OSliderNext, { extends: 'button' })
@@ -42,6 +42,16 @@ In your HTML:
 ```
 
 ## API
+
+### `slide-speed`
+
+Description: The speed, in milliseconds, of the slide transition animation.
+
+Type: Int
+
+Default value: `1000`
+
+Example: `<o-slider id="example" slide-speed="350">`
 
 ### `slides-per-page`
 
@@ -73,15 +83,23 @@ Default value: `false`
 
 Example: `<o-slider id="example" autoplay="true">`
 
-### `slide-speed`
+### `autoplay-speed`
 
 Description: The speed, in milliseconds, of the slide transition animation.
 
-Type: Int
+Type: Bool
 
-Default value: `1000`
+Default value: `12000`
 
-Example: `<o-slider id="example" slide-speed="350">`
+Example: `<o-slider id="example" autoplay="true" autoplay-speed="12000">`
+
+### `pageUpdated`
+
+Description: An event that the slider fires anytime a page is updated
+
+Type: Event
+
+Example: `document.querySelector('o-slider#example').addEventListener('pageUpdated', () => console.log('page updated'))`
 
 ## Build Setup
 

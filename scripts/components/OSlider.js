@@ -120,7 +120,7 @@ class OSlider extends HTMLElement {
     this.slideSpeed = this.hasAttribute('slide-speed') ? parseInt(this.getAttribute('slide-speed')) : 1000
     this.swipeThreshold = this.hasAttribute('swipe-threshold') ? parseInt(this.getAttribute('swipe-threshold')) : 100
     this.autoplay = this.hasAttribute('autoplay') ? this.getAttribute('autoplay') == "true" : false
-    this.autoplaySpeed = this.hasAttribute('autoplay-speed') ? parseInt(this.getAttribute('autoplay-speed')) : 6000
+    this.autoplaySpeed = this.hasAttribute('autoplay-speed') ? parseInt(this.getAttribute('autoplay-speed')) : 12000
     
 
 
