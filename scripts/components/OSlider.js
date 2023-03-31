@@ -409,7 +409,6 @@ class OSlider extends HTMLElement {
     prependContainer.setAttribute('aria-hidden', true)
     prependContainer.style.cssText = `
       display: flex;
-      white-space: nowrap;          
       position: absolute;
       top: 0;
       left: 0;
