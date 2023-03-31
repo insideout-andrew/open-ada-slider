@@ -1,4 +1,8 @@
 class OSliderPaginationText extends HTMLElement {
+  get originalConstructorName(){
+    return "OSliderPaginationText"
+  }
+
   constructor(){
     super()
     this.loaded = false

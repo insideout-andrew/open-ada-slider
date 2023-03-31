@@ -1,4 +1,8 @@
 class OSliderAutoplayControls extends HTMLElement {
+  get originalConstructorName(){
+    return "OSliderAutoplayControls"
+  }
+
   constructor() {
     super()
 

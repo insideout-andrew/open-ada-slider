@@ -28,6 +28,7 @@ customElements.define('o-slider-pagination-text', OSliderPaginationText)
 
 In your HTML:
 ``` html
+<h2>Simple Example>
 <o-slider id="example-1">
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
@@ -39,6 +40,31 @@ In your HTML:
 <button is="o-slider-page" slider="example-1" index="2">3</button>
 <button is="o-slider-next" slider="example-1">Next</button>
 <o-slider-pagination-text slider="example-1"></o-slider-pagination-text>  
+
+<h2>Complex Example>
+<o-slider 
+  id="example-2"
+  slide-speed="1000"
+  slides-per-page="3"
+  slides-per-page-1024="2"
+  slides-per-page-768="1"
+  autoplay="true"
+  autoplay-speed="12000"
+>
+  <div class="slide">Slide 1</div>
+  /* ... */
+  <div class="slide">Slide 12</div>
+</o-slider>
+<button is="o-slider-prev" slider="example-2">Prev</button>
+<button is="o-slider-page" slider="example-2" index="0">1</button>
+/* ... */
+<button is="o-slider-page" slider="example-2" index="11">12</button>
+<button is="o-slider-next" slider="example-2">Next</button>
+<o-slider-autoplay-controls slider="example-2">
+  <button slot="play">Play</button>
+  <button slot="pause">Pause</button>
+</o-slider-autoplay-controls>
+<o-slider-pagination-text slider="example-2"></o-slider-pagination-text>  
 ```
 
 ## API

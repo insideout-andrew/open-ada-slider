@@ -1,4 +1,8 @@
 class OSliderNext extends HTMLButtonElement {
+  get originalConstructorName(){
+    return "OSliderNext"
+  }
+
   constructor() {
     super()
 

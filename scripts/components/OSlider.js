@@ -135,7 +135,6 @@ class OSlider extends HTMLElement {
 
         .viewport {
           display: flex;
-          white-space: nowrap;
           transition-duration: ${this.slideSpeed}ms;
           transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
           position: relative;
@@ -345,7 +344,7 @@ class OSlider extends HTMLElement {
     const customElements = document.getElementsByTagName('*');
     for (let i = 0; i < customElements.length; i++) {
       const element = customElements[i];
-      if (element.constructor.name == className && element.getAttribute('slider') == this.id) {
+      if ("originalConstructorName" in element && element.originalConstructorName == className && element.getAttribute('slider') == this.id) {
         found.push(element)
       }
     }

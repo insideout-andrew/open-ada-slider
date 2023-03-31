@@ -5,6 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .parcel-cache/
+TODO.md
 
 # Editor directories and files
 .idea
