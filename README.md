@@ -50,6 +50,9 @@ In your HTML:
   slides-per-page-768="1"
   autoplay="true"
   autoplay-speed="12000"
+  swipe-threshold="100"
+  slide-alignment="stretch"
+  adaptive-height="false"
 >
   <div class="slide">Slide 1</div>
   /* ... */
@@ -67,7 +70,7 @@ In your HTML:
 <o-slider-pagination-text slider="example-2"></o-slider-pagination-text>  
 ```
 
-## API
+## Settings
 
 ### `slide-speed`
 
@@ -113,19 +116,79 @@ Example: `<o-slider id="example" autoplay="true">`
 
 Description: The speed, in milliseconds, of the slide transition animation.
 
-Type: Bool
+Type: Int
 
 Default value: `12000`
 
 Example: `<o-slider id="example" autoplay="true" autoplay-speed="12000">`
 
+### `swipe-threshold`
+
+Description: The minimum swipe distance in px to trigger a page change
+
+Type: Int
+
+Default value: `100`
+
+Example: `<o-slider id="example" swipe-threshold="100">`
+
+### `slide-alignment`
+
+Description: How slides are positioned if they are not all the same side
+
+Type: String
+
+Default value: `stretch`
+
+Valid values: `stretch|top|bottom|center`
+
+Example: `<o-slider id="example" slide-alignment="center">`
+
+### `adaptive-height`
+
+Description: Sets if the slider should resize to fit the tallest visible slide. This field only works if `slide-alignment` != `stretch`. Setting this to true is discouraged because it causes layout shifts.
+
+Type: Boolean
+
+Default value: false
+
+Example: `<o-slider id="example" slide-alignment="center" adaptive-height="true">`
+
+## Events
+
 ### `pageUpdated`
 
-Description: An event that the slider fires anytime a page is updated
+Description: An event that the slider fires anytime the current page is updated
 
 Type: Event
 
 Example: `document.querySelector('o-slider#example').addEventListener('pageUpdated', () => console.log('page updated'))`
+
+## Public Properties
+
+### `currentPage`
+
+Description: The current active page
+
+Type: Int
+
+Example: `document.querySelector('o-slider#example').currentPage`
+
+### `totalPages`
+
+Description: The current total pages
+
+Type: Int
+
+Example: `document.querySelector('o-slider#example').totalPages`
+
+### `slidesPerPage`
+
+Description: The current responsive slides per page
+
+Type: Int
+
+Example: `document.querySelector('o-slider#example').slidesPerPage`
 
 ## Build Setup
 

@@ -117,10 +117,12 @@ class OSlider extends HTMLElement {
     this.shouldFocus = false //turn this true when a button is clicked or the screen is swiped - otherwise animations fire everytime there is an update
 
     //public variables
-    this.slideSpeed = this.hasAttribute('slide-speed') ? parseInt(this.getAttribute('slide-speed')) : 1000
     this.swipeThreshold = this.hasAttribute('swipe-threshold') ? parseInt(this.getAttribute('swipe-threshold')) : 100
+    this.slideSpeed = this.hasAttribute('slide-speed') ? parseInt(this.getAttribute('slide-speed')) : 1000
     this.autoplay = this.hasAttribute('autoplay') ? this.getAttribute('autoplay') == "true" : false
     this.autoplaySpeed = this.hasAttribute('autoplay-speed') ? parseInt(this.getAttribute('autoplay-speed')) : 12000
+    this.slideAlignment = this.hasAttribute('slide-alignment') ? this.getAttribute('slide-alignment') : "stretch" //top|bottom|center|stretch
+    this.adaptiveHeight = this.hasAttribute('adaptive-height') ? this.getAttribute('adaptive-height') === "true" : false
     
 
 
@@ -135,10 +137,11 @@ class OSlider extends HTMLElement {
 
         .viewport {
           display: flex;
+          align-items: ${this.slideAlignmentValue};
           transition-duration: ${this.slideSpeed}ms;
           transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
           position: relative;
-          will-change: transform;
+          will-change: transform height;
         }
         .viewport.animations-disabled {
           transition: none;
@@ -234,6 +237,16 @@ class OSlider extends HTMLElement {
     })
     return count
   }
+  
+  get slideAlignmentValue(){
+    if(this.slideAlignment == 'bottom'){
+      return "flex-end"
+    } else if(this.slideAlignment == 'top'){
+      return "flex-start"
+    } else {
+      return this.slideAlignment
+    }
+  }
 
   set currentPage(val){
     if(this._isAnimating || parseInt(val) == this._currentPage){
@@ -264,7 +277,8 @@ class OSlider extends HTMLElement {
     this._viewport.style.transform = `translate3D(${leftPx}px, 0, 0)`
     this._isAnimating = true
     
-    //handle swapping from last to first or first to last
+
+    //handle swapping from last to first or first to last    
     this._viewport.classList.remove('animations-disabled')
     setTimeout(() => this._animationFinished(), this.slideSpeed + 1)
   }
@@ -334,11 +348,40 @@ class OSlider extends HTMLElement {
       this.shouldFocus = false
       this._pages[this._currentPage][0].focus({preventScroll: true})
     }
+
+    if(this.adaptiveHeight){
+      setTimeout(() => {
+        this._viewport.classList.remove('animations-disabled')
+        const tallest = this._getTallestVisibleSlide()
+        if(tallest){
+          this._viewport.style.height = tallest.offsetHeight + 'px'
+        }
+      }, 20)
+    }
   }
 
-  // if(this.autoplay){
-  //   this._warnIfNoControlsFound()
-  // }
+
+  _getTallestVisibleSlide(){
+    const viewportX = findTranslate3DX(this._viewport)
+    const slides = this._originalChildren;
+    let tallestSlide = null;
+    let tallestSlideHeight = 0;
+    for (let i = 0; i < slides.length; i++) {
+      const slide = slides[i];
+      const slideLeft = slide.offsetLeft - this._viewport.offsetLeft
+      const isVisible = slideLeft >= viewportX && slideLeft < Math.abs(viewportX) + this._viewport.offsetWidth;
+      if (isVisible) {
+        const slideHeight = slide.offsetHeight;
+        if (slideHeight > tallestSlideHeight) {
+          tallestSlideHeight = slideHeight;
+          tallestSlide = slide;
+        }
+      }
+    }
+    return tallestSlide;    
+  }
+
+
   _getCustomElementByClassName(className){
     let found = []
     const customElements = document.getElementsByTagName('*');
@@ -409,6 +452,7 @@ class OSlider extends HTMLElement {
     prependContainer.setAttribute('aria-hidden', true)
     prependContainer.style.cssText = `
       display: flex;
+      align-items: ${this.slideAlignmentValue};
       position: absolute;
       top: 0;
       left: 0;
@@ -426,6 +470,7 @@ class OSlider extends HTMLElement {
     appendContainer.setAttribute('aria-hidden', true)
     appendContainer.style.cssText = `
       display: flex;
+      align-items: ${this.slideAlignmentValue};
     `    
     Array.from(this.children).forEach(page => {
       var clone = page.cloneNode(true)
