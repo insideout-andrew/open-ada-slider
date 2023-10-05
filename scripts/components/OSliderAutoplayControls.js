@@ -47,7 +47,16 @@ class OSliderAutoplayControls extends HTMLElement {
       playSlot.style.display = 'none'
       pauseSlot.style.display = ''      
     }
+
+    this._maybeHide()
+    window.addEventListener('resize', e => this._maybeHide())
   }
+
+  _maybeHide(){
+    const slider = document.getElementById(this.getAttribute('slider'))
+    const totalPages = slider.totalPages
+    this.style.display = this.index > totalPages - 1 || totalPages == 1 ? 'none' : ''    
+  }  
 }
 
 export { OSliderAutoplayControls }

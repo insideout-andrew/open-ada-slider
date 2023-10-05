@@ -249,6 +249,10 @@ class OSlider extends HTMLElement {
   }
 
   set currentPage(val){
+    if(this.slidesPerPage >= this._originalChildren.length){
+      return
+    }
+
     if(this._isAnimating || parseInt(val) == this._currentPage){
       return;
     }
@@ -284,7 +288,7 @@ class OSlider extends HTMLElement {
   }
 
   get slideWidth(){
-    return this.offsetWidth / this.slidesPerPage
+    return Math.ceil(this.offsetWidth / this.slidesPerPage)
   }
 
   get currentPage() {
@@ -302,6 +306,10 @@ class OSlider extends HTMLElement {
   }
 
   set isAutoplaying(val){
+    if(this.slidesPerPage >= this._originalChildren.length){
+      return
+    }
+
     this._isAutoplaying = val
     if(val){
       this._autoplayInterval = setInterval(() => {
@@ -378,6 +386,7 @@ class OSlider extends HTMLElement {
         }
       }
     }
+    console.log(tallestSlide)
     return tallestSlide;    
   }
 
@@ -491,7 +500,17 @@ class OSlider extends HTMLElement {
     this._viewport.classList.add('animations-disabled')
     this.currentPage = 0
 
-    this.dispatchEvent(new Event("pageUpdated")) 
+    this.dispatchEvent(new Event("pageUpdated"))
+
+    const clones = this.querySelectorAll('.append-clone, .prepend-clone')
+    if(clones){
+      clones.forEach(clone => {
+        clone.style.display = this.slidesPerPage >= this._originalChildren.length ? 'none' : 'flex'
+      })
+      if(this.slidesPerPage >= this._originalChildren.length){
+        this._viewport.style.transform = 'none'
+      }
+    }
   }
 
   _collectResponsiveBreakpoints(){
