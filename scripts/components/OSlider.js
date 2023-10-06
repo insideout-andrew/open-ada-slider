@@ -386,7 +386,6 @@ class OSlider extends HTMLElement {
         }
       }
     }
-    console.log(tallestSlide)
     return tallestSlide;    
   }
 
