@@ -284,7 +284,7 @@ class OSlider extends HTMLElement {
 
     //handle swapping from last to first or first to last    
     this._viewport.classList.remove('animations-disabled')
-    setTimeout(() => this._animationFinished(), this.slideSpeed + 1)
+    setTimeout(() => this._animationFinished(), this.slideSpeed + 5)
   }
 
   get slideWidth(){

@@ -28,7 +28,7 @@ customElements.define('o-slider-pagination-text', OSliderPaginationText)
 
 In your HTML:
 ``` html
-<h2>Simple Example>
+<h2>Simple Example</h2>
 <o-slider id="example-1">
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
@@ -41,7 +41,7 @@ In your HTML:
 <button is="o-slider-next" slider="example-1">Next</button>
 <o-slider-pagination-text slider="example-1"></o-slider-pagination-text>  
 
-<h2>Complex Example>
+<h2>Complex Example</h2>
 <o-slider 
   id="example-2"
   slide-speed="1000"
@@ -190,7 +190,7 @@ Type: Int
 
 Example: `document.querySelector('o-slider#example').slidesPerPage`
 
-## Build Setup
+## Dev
 
 ``` bash
 # install dependencies
@@ -198,16 +198,10 @@ npm install
 
 # serve with hot reload at localhost:1234
 npm run serve
-
-# lint code
-npm run lint
-
-# build for production with minification
-npm run build
 ```
 
-## Build Documentation
-* [Bulma](https://bulma.io/)
-* [ParcelJS](https://parceljs.org/)
-* [Eslint - Airbnb](https://github.com/airbnb/javascript)
-* [PostHTML-include](https://github.com/posthtml/posthtml-include)
+## Build
+``` bash
+npm version {version}
+npm publish
+```
