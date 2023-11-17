@@ -190,6 +190,14 @@ Type: Int
 
 Example: `document.querySelector('o-slider#example').slidesPerPage`
 
+## Public Methods
+
+### `triggerResize`
+
+Description: Trigger the slider to recalculate its size
+
+Example: `document.querySelector('o-slider#example').triggerResize()`
+
 ## Dev
 
 ``` bash
