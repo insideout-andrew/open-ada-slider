@@ -118,13 +118,16 @@ class OSlider extends HTMLElement {
 
     //public variables
     this.swipeThreshold = this.hasAttribute('swipe-threshold') ? parseInt(this.getAttribute('swipe-threshold')) : 100
-    this.slideSpeed = this.hasAttribute('slide-speed') ? parseInt(this.getAttribute('slide-speed')) : 1000
+    this.slideSpeed = this.hasAttribute('slide-speed') ? parseInt(this.getAttribute('slide-speed')) : 500
     this.autoplay = this.hasAttribute('autoplay') ? this.getAttribute('autoplay') == "true" : false
     this.autoplaySpeed = this.hasAttribute('autoplay-speed') ? parseInt(this.getAttribute('autoplay-speed')) : 12000
     this.slideAlignment = this.hasAttribute('slide-alignment') ? this.getAttribute('slide-alignment') : "stretch" //top|bottom|center|stretch
     this.adaptiveHeight = this.hasAttribute('adaptive-height') ? this.getAttribute('adaptive-height') === "true" : false
+    this.animationStyle = this.hasAttribute('animation-style') ? this.getAttribute('animation-style') : "slide" //slide|none
     
-
+    if(this.animationStyle == 'none'){
+      this.slideSpeed = 0
+    }
 
     const shadow = this.attachShadow({ mode: 'open' });
     const template = document.createElement('template');
@@ -138,10 +141,11 @@ class OSlider extends HTMLElement {
         .viewport {
           display: flex;
           align-items: ${this.slideAlignmentValue};
-          transition-duration: ${this.slideSpeed}ms;
+          will-change: transform, height;
+          transition-property: transform, height;
+          transition-duration: ${this.slideSpeed}ms, ${this.slideSpeed}ms;
           transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
           position: relative;
-          will-change: transform height;
         }
         .viewport.animations-disabled {
           transition: none;
@@ -288,7 +292,7 @@ class OSlider extends HTMLElement {
   }
 
   get slideWidth(){
-    return Math.ceil(this.offsetWidth / this.slidesPerPage)
+    return this.offsetWidth / this.slidesPerPage
   }
 
   get currentPage() {
@@ -342,11 +346,15 @@ class OSlider extends HTMLElement {
       } 
 
 
-      setTimeout(() => this._viewport.style.transform = `translate3D(${leftPx}px, 0, 0)`)
+      setTimeout(() => {
+        this._viewport.style.transform = `translate3D(${leftPx}px, 0, 0)`
+      })
       this._currentPage = this._pages.length - 1
     } else if(this._currentPage == this.totalPages){
       this._viewport.classList.add('animations-disabled')
-      setTimeout(() => this._viewport.style.transform = `translate3D(0, 0, 0)`, 10)
+      setTimeout(() => {
+        this._viewport.style.transform = `translate3D(0, 0, 0)`
+      }, 10)
       this._currentPage = 0
     }
 
@@ -426,6 +434,7 @@ class OSlider extends HTMLElement {
   _updateSlideAriaAndFocus(){
     this._pages.forEach((slides, index) => {
       slides.forEach(slide => {
+
         const isVisible = index == this.currentPage
         slide.setAttribute('aria-hidden', !isVisible)
         slide.setAttribute('tabindex', -1)
@@ -522,6 +531,13 @@ class OSlider extends HTMLElement {
 
   _currentPageWouldShowEmptySpace(){
     return this._pages[this.currentPage] && this._pages[this.currentPage].length != this.slidesPerPage
+  }
+
+  /**
+   * Public functions
+   */
+  triggerResize(){
+    this._handleScreenResize()
   }
 }
 
