@@ -229,6 +229,16 @@ class OSlider extends HTMLElement {
     this._handleScreenResize()
     this._warnIfMissingElements()
     this.currentPage = this._currentPage
+
+    // this checks if the visibility changes, if it does - resize everything as needed
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          this._handleScreenResize()
+        }
+      })
+    }, { threshold: 0.01 })
+    observer.observe(this);
   }
 
   get slidesPerPage(){
