@@ -1,6 +1,6 @@
 {
   "name": "open-ada-slider",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "A no-CSS-required slider component designed to comply with the accessibility standards set forth by the ADA. This slider is fully customizable, lightweight, and easy to integrate into any web application or framework.",
   "main": "index.js",
   "files": [
