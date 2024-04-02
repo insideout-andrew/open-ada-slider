@@ -129,7 +129,7 @@ class OSlider extends HTMLElement {
       this.slideSpeed = 0
     }
 
-    const shadow = this.attachShadow({ mode: 'open' });
+    this.shadow = this.attachShadow({ mode: 'open' });
     const template = document.createElement('template');
     template.innerHTML = `
       <style>
@@ -159,10 +159,10 @@ class OSlider extends HTMLElement {
         <slot></slot>
       </div>
     `;
-    shadow.appendChild(template.content.cloneNode(true))
+    this.shadow.appendChild(template.content.cloneNode(true))
 
     //private variables
-    this._viewport = shadow.querySelector('.viewport')
+    this._viewport = this.shadow.querySelector('.viewport')
     this._isAnimating = false
     this._originalChildren = Array.from(this.children)
     this._pages = chunkArray(Array.from(this.children), this.slidesPerPage)
@@ -231,11 +231,16 @@ class OSlider extends HTMLElement {
     this.currentPage = this._currentPage
 
     // this checks if the visibility changes, if it does - resize everything as needed
+    // this is helpful if the slider is in something initially hidden
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if(entry.isIntersecting) {
-          this._handleScreenResize()
+          const firstSlide = this.querySelector('*:nth-of-type(2)')
+          if(parseInt(firstSlide.style.width) == 0){
+            this._handleScreenResize()
+          }
         }
+
       })
     }, { threshold: 0.01 })
     observer.observe(this);

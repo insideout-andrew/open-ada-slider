@@ -7,7 +7,7 @@
 
     <title>Open ADA Slider</title>
   </head>
-  <body>
+  <body style="min-height: 200vh">
 
 
     <section class="wrapper">
@@ -89,33 +89,36 @@
     </section>
 
 
-
+  
     <section class="wrapper">
-      <o-slider 
-        id="second-slider" 
-        slide-speed="350"
-        slides-per-page="2"
-        slides-per-page-768="1"
-      >
-        <div class="slide" style="background: fuchsia">
-          <h2>Here is content</h2>
-          <p>Here is <a href="#">more content</a>.</p>
-        </div>
-        <div class="slide" style="background: pink">
-          <h2>Here is content 2</h2>
-          <p>Here is <a href="#">more content</a>.</p>
-        </div>
-        <div class="slide" style="background: red">
-          <h2>Here is content 3</h2>
-          <p>Here is <a href="#">more content</a>.</p>
-        </div>
-      </o-slider>
-      <button is="o-slider-prev" slider="second-slider">Prev</button>
-      <button is="o-slider-page" slider="second-slider" index="0">1</button>
-      <button is="o-slider-page" slider="second-slider" index="1">2</button>
-      <button is="o-slider-page" slider="second-slider" index="2">3</button>
-      <button is="o-slider-next" slider="second-slider">Next</button>
-      <o-slider-pagination-text slider="second-slider"></o-slider-pagination-text>   
+      <button onclick="document.querySelector('#second-slider-container').style.display = ''">Show slider</button>
+      <div id="second-slider-container" style="display:none">
+        <o-slider 
+          id="second-slider" 
+          slide-speed="350"
+          slides-per-page="2"
+          slides-per-page-768="1"
+        >
+          <div class="slide" style="background: fuchsia">
+            <h2>Here is content</h2>
+            <p>Here is <a href="#">more content</a>.</p>
+          </div>
+          <div class="slide" style="background: pink">
+            <h2>Here is content 2</h2>
+            <p>Here is <a href="#">more content</a>.</p>
+          </div>
+          <div class="slide" style="background: red">
+            <h2>Here is content 3</h2>
+            <p>Here is <a href="#">more content</a>.</p>
+          </div>
+        </o-slider>
+        <button is="o-slider-prev" slider="second-slider">Prev</button>
+        <button is="o-slider-page" slider="second-slider" index="0">1</button>
+        <button is="o-slider-page" slider="second-slider" index="1">2</button>
+        <button is="o-slider-page" slider="second-slider" index="2">3</button>
+        <button is="o-slider-next" slider="second-slider">Next</button>
+        <o-slider-pagination-text slider="second-slider"></o-slider-pagination-text>   
+      </div>
     </section>
 
 
