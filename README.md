@@ -67,7 +67,7 @@ In your HTML:
   <button slot="play">Play</button>
   <button slot="pause">Pause</button>
 </o-slider-autoplay-controls>
-<o-slider-pagination-text slider="example-2"></o-slider-pagination-text>  
+<o-slider-pagination-text slider="example-2" format="[x]/[y]"></o-slider-pagination-text>  
 ```
 
 ## Settings
