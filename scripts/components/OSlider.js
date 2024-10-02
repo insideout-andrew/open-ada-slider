@@ -332,11 +332,11 @@ class OSlider extends HTMLElement {
     this._isAutoplaying = val
     if(val){
       this._autoplayInterval = setInterval(() => {
-        if(window.innerWidth <= 768){
-          console.warn("Skipping autoplay on mobile.")
-          this.isAutoplaying = false
-          return
-        }
+        // if(window.innerWidth <= 768){
+        //   console.warn("Skipping autoplay on mobile.")
+        //   this.isAutoplaying = false
+        //   return
+        // }
         this.currentPage += 1
       }, this.autoplaySpeed)
     } else {
