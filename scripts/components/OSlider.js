@@ -453,6 +453,12 @@ class OSlider extends HTMLElement {
         const isVisible = index == this.currentPage
         slide.setAttribute('aria-hidden', !isVisible)
         slide.setAttribute('tabindex', -1)
+        if(isVisible){
+          slide.removeAttribute('inert')
+        } else {
+          slide.setAttribute('inert', '')
+        }
+
         toggleFocusableOnChildren(slide, isVisible)
         slide.style.width = `${this.slideWidth}px`
       })
@@ -482,6 +488,8 @@ class OSlider extends HTMLElement {
     const prependContainer = document.createElement('div')
     prependContainer.classList.add('prepend-clone')
     prependContainer.setAttribute('aria-hidden', true)
+    prependContainer.setAttribute('inert', '')
+    prependContainer.setAttribute('tabindex', '-1')
     prependContainer.style.cssText = `
       display: flex;
       align-items: ${this.slideAlignmentValue};
@@ -500,6 +508,8 @@ class OSlider extends HTMLElement {
     const appendContainer = document.createElement('div')
     appendContainer.classList.add('append-clone')
     appendContainer.setAttribute('aria-hidden', true)
+    appendContainer.setAttribute('inert', '')
+    appendContainer.setAttribute('tabindex', '-1')
     appendContainer.style.cssText = `
       display: flex;
       align-items: ${this.slideAlignmentValue};
